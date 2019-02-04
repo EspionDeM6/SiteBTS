@@ -59,6 +59,7 @@ footer .footer-spacer {
 
 .main-container-bg {
   background-color: #efefef;
+  background-size: cover;
 }
 
 .large-menu {
@@ -90,4 +91,18 @@ footer .footer-spacer {
 
 .large-menu li a:hover {
 	border-bottom: 2px solid rgba(255,255,255,0.5);
+}
+
+footer {
+	color: rgba(255,255,255,0.5);
+	background-color: hsl(200,100%,70%);
+	transition: .75s;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+footer .footer-spacer {
+	height: 20px;
+	width: 100%;
+	display: block;
 }

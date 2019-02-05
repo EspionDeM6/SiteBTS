@@ -136,3 +136,13 @@ footer .footer-spacer {
 .share-googleplus {
   background-image: url("../img/icons/googleplus.svg")
 }
+
+.page-header {
+
+    font-size: 32px;
+    line-height: normal;
+    text-align: center;
+    color: red;
+    margin: 0 0 16px 0;
+
+}

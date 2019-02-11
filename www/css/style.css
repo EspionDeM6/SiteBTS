@@ -7,7 +7,6 @@ html,body
     overflow-x: hidden;
 }
 
-header .logo-container {padding: 1px;}
 
 header .logo {
   height: 170px;
@@ -60,6 +59,7 @@ footer .footer-spacer {
 .main-container-bg {
   background-color: #efefef;
   background-size: cover;
+  flex-grow: 2;
 }
 
 .large-menu {
@@ -99,12 +99,12 @@ footer {
 	transition: .75s;
 	padding: 0 !important;
   margin: 0 !important;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
+  align-items: flex-end;
+  flex-grow: 1;
+
 }
 
-footer .footer-spacer {
+.footer-spacer {
 	height: 20px;
 	width: 100%;
 	display: block;
@@ -148,4 +148,15 @@ footer .footer-spacer {
     color: red;
     margin: 0 0 16px 0;
 
+}
+
+body{
+  display: flex;
+  height: 100%;
+  overflow-x: hidden;
+  flex-flow: column nowrap;
+}
+
+header {
+  align-items: flex-start;
 }

@@ -106,3 +106,43 @@ footer .footer-spacer {
 	width: 100%;
 	display: block;
 }
+
+.social-header {
+    line-height: 48px;
+    font-weight: 500;
+    border-top: 1px solid #DDD;
+}
+
+.social a {
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: inherit;
+}
+
+.share-email {
+  background-image: url("../img/icons/mail.svg")
+}
+
+.share-facebook {
+  background-image: url("../img/icons/facebook.svg")
+}
+
+.share-twitter {
+  background-image: url("../img/icons/twitter.svg")
+}
+
+.share-googleplus {
+  background-image: url("../img/icons/googleplus.svg")
+}
+
+.page-header {
+
+    font-size: 32px;
+    line-height: normal;
+    text-align: center;
+    color: red;
+    margin: 0 0 16px 0;
+
+}

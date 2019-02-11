@@ -4,67 +4,103 @@
   <meta charset="utf-8">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <link rel="stylesheet" href="../css/materialize.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="css/materialize.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mini-Projet</title>
 </head>
 <body>
-    <header class="brown lighten-5">
-      <div class="logo-container bg-primary">
-        <div class="logo"></div>
-      </div>
-    </header>
-    <div class="menu bg-primary">
-    <ul class="large-menu center">
-        <li><a class="async active" href="../index.html">Accueil</a></li>
-        <li><a class="async active" href="../projets.html">Projets</a></li>
-    </ul>
-  </div>
-    <div class="main-container-bg">
-      <div class="main-container">
+  <header class="brown lighten-5">
+    <div class="logo-container bg-primary">
+      <div class="logo"></div>
+    </div>
+  </header>
+  <div class="menu bg-primary">
+  <ul class="large-menu center">
+      <li><a class="async active" href="index.html">Accueil</a></li>
+      <li><a class="async active" href="projets.html">Projets</a></li>
+  </ul>
+  </nav>
+  <div class="main-container-bg">
+    <div class="main-container">
+        <h5>Matériel utilisé</h5>
 
-
-Hae duae provinciae bello quondam piratico catervis mixtae praedonum a Servilio pro consule missae sub iugum factae sunt vectigales. et hae quidem regiones velut in prominenti terrarum lingua positae ob orbe eoo monte Amano disparantur.
-
-Paphius quin etiam et Cornelius senatores, ambo venenorum artibus pravis se polluisse confessi, eodem pronuntiante Maximino sunt interfecti. pari sorte etiam procurator monetae extinctus est. Sericum enim et Asbolium supra dictos, quoniam cum hortaretur passim nominare, quos vellent, adiecta religione firmarat, nullum igni vel ferro se puniri iussurum, plumbi validis ictibus interemit. et post hoe flammis Campensem aruspicem dedit, in negotio eius nullo sacramento constrictus.
-
-Post hoc impie perpetratum quod in aliis quoque iam timebatur, tamquam licentia crudelitati indulta per suspicionum nebulas aestimati quidam noxii damnabantur. quorum pars necati, alii puniti bonorum multatione actique laribus suis extorres nullo sibi relicto praeter querelas et lacrimas, stipe conlaticia victitabant, et civili iustoque imperio ad voluntatem converso cruentam, claudebantur opulentae domus et clarae.
-
-Dumque ibi diu moratur commeatus opperiens, quorum translationem ex Aquitania verni imbres solito crebriores prohibebant auctique torrentes, Herculanus advenit protector domesticus, Hermogenis ex magistro equitum filius, apud Constantinopolim, ut supra rettulimus, populari quondam turbela discerpti. quo verissime referente quae Gallus egerat, damnis super praeteritis maerens et futurorum timore suspensus angorem animi quam diu potuit emendabat.
-
-Non ergo erunt homines deliciis diffluentes audiendi, si quando de amicitia, quam nec usu nec ratione habent cognitam, disputabunt. Nam quis est, pro deorum fidem atque hominum! qui velit, ut neque diligat quemquam nec ipse ab ullo diligatur, circumfluere omnibus copiis atque in omnium rerum abundantia vivere? Haec enim est tyrannorum vita nimirum, in qua nulla fides, nulla caritas, nulla stabilis benevolentiae potest esse fiducia, omnia semper suspecta atque sollicita, nullus locus amicitiae.
-
-      <div class="social">
-        <div class="social-header">Partager la page</div>
-        <a class="waves-effect waves-light share-email" title="Partager par mail" onclick="mailShare()"></a>
-        <a class="waves-effect waves-light share-facebook" title="Partager sur Facebook" onclick="fbShare()"></a>
-        <a class="waves-effect waves-light share-twitter" title="Partager sur Twitter" onclick="twitShare()"></a>
-        <a class="waves-effect waves-light share-googleplus" title="Partager sur Google+" onclick="gplusShare()"></a>
-      </div>
+        <h5>Mise en place des composants</h5>
+        <div style="float:right;">
+        <img src="../img/projet1_small.jpg"></div>
+        <ul style="text-align: left;">
+          <li>Capteur de température (LM35)</li>
+          <li>Capteur de qualité de l'air (MP503)</li>
+          <li>Capteur d'humidité (HIH-4000-003)</li>
+          <li>Convertisseur Analogique Numérique (PmodAD2)</li>
+          <li>Horloge temps réel (DS1307)</li>
+          <li>Raspberry Pi B+</li>
+        </ul>
+        
+        <ul>
+          <li><h6 style="text-align:left;text-decoration: underline;">Installation de l'OS sur la carte SD de la Raspberry</h6></li>
+          <li><h6 style="text-align:left;text-decoration: underline;">CAN PmodAD2</h6>
+            <p style="text-align:justify;">
+              Le CAN permet de convertir les valeurs de tensions en un signal numérique pour permettre de récupérer les valeurs des capteurs.
+            </p>
+          </li>
+          <li><h6 style="text-align:left;text-decoration: underline;">Capteur d'humidité HIH-4000-003</h6>
+            <p style="text-align: justify;">
+              Ce capteur nécessite une tension d'entrée de 5V.<br/>
+              La courbe de tension de ce capteur par rapport à l'humidité est affine.<br/>
+              On retrouve dans la doc le schéma du capteur nécessaire au montage.
+            </p>
+          </li>
+          <li><h6 style="text-align:left;text-decoration: underline;">Capteur de qualité de l'air MP503</h6>
+            <p style="text-align: justify;">
+              Ce capteur doit être alimenté en 5V. Il détecte la concentration de 6 gaz différents dans l'air (Alcool, dihydrogène,méthane,butane,CO2,méthanal). On détermine que :<br/>
+              Soit Vout < 1, il n'y a pas de pollution.<br/>
+              Soit 1 < Vout < 2, il y a une légère pollution.<br/>
+              Soit 2 < Vout < 3, il y a une forte pollution.<br/>
+              Soit Vout > 3, il y a une très forte pollution.
+            </p>
+          </li>
+          <li><h6 style="text-align:left;text-decoration: underline;">RTC DS1307</h6>
+            <p style="text-align: justify;">
+              On règle la RTC avec les outils i2c puis on affiche la date et l'heure dans un fichier csv.
+            </p>
+          </li>
+        </ul>
+        <h5>Programme en C</h5>
+        <p style="text-align: justify;">
+          On crée un programme qui permet de stocker dans un fichier csv (fichier texte avec des séparateurs) les données des capteurs ainsi que l'heure correspondante. Ainsi, notre programme relève les valeurs chaque seconde et au bout de 10 secondes, effectue les moyennes de celles-ci et stocke ces moyennes dans le fichier.
+        </p>
+        <img src="../img/pro1_tabcsv.jpg">
+        <p style="font-style:italic;">Fichier csv final ouvert avec un tableur</p>
+        <div class="social">
+            <div class="social-header">Partager la page</div>
+            <a class="waves-effect waves-light share-email" title="Partager par mail" onclick="mailShare()"></a>
+            <a class="waves-effect waves-light share-facebook" title="Partager sur Facebook" onclick="fbShare()"></a>
+            <a class="waves-effect waves-light share-twitter" title="Partager sur Twitter" onclick="twitShare()"></a>
+            <a class="waves-effect waves-light share-googleplus" title="Partager sur Google+" onclick="gplusShare()"></a>
+          </div>
   	</div>
   </div>
   <footer class="page-footer bg-primary">
+    <div class="container">
+      <div  class="footer-spacer"></div>
+      <div class="row">
+        <div class="col s8 offset-s8">
+    			<ul>
+    				<li><a class="async grey-text text-lighten-4" href="../legal.html">Mention légales</a></li>
+    				<li><a class="async grey-text text-lighten-4" href="../map.html">Plan du Site</a></li>
+    				<li><a class="async grey-text text-lighten-4" href="../w3c.html">W3C</a></li>
+    				<li><a class="async grey-text text-lighten-4" href="../credits.html">Les créateurs</a></li>
+    			</ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
       <div class="container">
-        <div  class="footer-spacer"></div>
-        <div class="row">
-          <div class="col s8 offset-s8">
-            <ul>
-              <li><a class="async grey-text text-lighten-4" href="../legal.html">Mention légales</a></li>
-              <li><a class="async grey-text text-lighten-4" href="../map.html">Plan du Site</a></li>
-              <li><a class="async grey-text text-lighten-4" href="../w3c.html">W3C</a></li>
-              <li><a class="async grey-text text-lighten-4" href="../credits.html">Les créateurs</a></li>
-            </ul>
-          </div>
-        </div>
+        2018-2019 | Lycée Gustave Eiffel Dijon
+        <a class="grey-text text-lighten-4 right">Tous droits réservés.</a>
       </div>
-      <div class="footer-copyright">
-        <div class="container">
-          2018-2019 | Lycée Gustave Eiffel Dijon
-          <a class="grey-text text-lighten-4 right">Tous droits réservés.</a>
-        </div>
-      </div>
-      <script type="text/javascript" src="js/social.js"></script>
-    </footer>
+    </div>
+	</footer>
 </div>
 </body>

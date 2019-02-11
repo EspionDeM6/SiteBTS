@@ -98,7 +98,10 @@ footer {
 	background-color: hsl(200,100%,70%);
 	transition: .75s;
 	padding: 0 !important;
-	margin: 0 !important;
+  margin: 0 !important;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 footer .footer-spacer {

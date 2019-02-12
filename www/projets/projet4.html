@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" href="../css/materialize.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini-Projet</title>
+</head>
+<body>
+  <header class="brown lighten-5">
+    <div class="logo-container bg-primary">
+      <div class="logo"></div>
+    </div>
+  </header>
+  <div class="menu bg-primary">
+  <ul class="large-menu center">
+      <li><a class="async active" href="../index.html">Accueil</a></li>
+      <li><a class="async active" href="../projets.html">Projets</a></li>
+  </ul>
+  </nav>
+  <div class="main-container-bg">
+    <div class="main-container">
+    	<h1>Tiny RTC</h1>
+    	<div class="row">
+   			<div class="col s6" >
+   				<div class="card-text">
+   					<p>Ce module tiny RTC est basé sur l'horloge DS1307 avec comme support le protocole i2c. Il utilise une batterie lithium (CR2032). L'horloge/calendrier donne les informations des secondes, minutes, heures, jour, date, mois, et année. La fin du mois est ajusté automatiquement avec les mois de moins de 31 jours, incluant les années bissextile. L'horloge fonctionne avec le format 24 heures ou le format 12 heures avec les indicateurs AM/PM.</p>
+   				</div>
+   			</div>
+   			<div class="col s6">
+   				<div class="card-image">
+   					<img src="../img/Projet4_2.jpg" >
+   				</div>
+   			</div>
+   		</div>
+
+   		
+   				<h2>Configuration de l'horloge:</h2></br>
+   			
+   			<div class="row">
+   				<div class="col s6">
+   					<div class="card-image">
+   						<img src="../img/Projet4_3.jpg">
+   					</div>
+   				</div>
+   				<div class="col s6">
+   					<h3>Initialisation raspberry et Tiny RTC</h3>
+   					<p>Pour cela il faut une raspberry pour configurer la Tiny RTC avec l'<strong>I2C</strong>.
+   					Raspberry configuré avec une image ISO raspbian-wheezy-sha256, mis dans un carte SD dont le stockage est de 16 Go. 
+   					Avant de la configurer il faut brancher la tiny RTC et la raspberry ensemble avec les connecteurs suivant: <strong>SCL, SDA, VCC, GND</strong>.</br></p>
+   				</div>
+   			</div>
+   			<div class="row">
+   				<h3>Mise à l'heure de l'horloge</h3>
+   				<div class="col s6">
+   					<p>Pour mettre l'horloge à l'heure on fait un <strong>i2cdetect -y 1</strong> pour avoir l'adresse de la RTC DS1307. Ce qui nous affiche le résultat suivant: <div class="card-image"><img src="../img/Projet4_4.jpg"></div></p>
+   				</div>	
+   				<div class="col s6">
+   					<p>La commande suivante pour mettre la tiny RTC à l'heure « i2cset -y 1,  pour afficher les valeurs que l'on a rentré grace au i2cset on fait "i2cget -y 1 0x68 0x00".
+   					<div class="card-image"><img src="../img/Projet4_5.jpg"></div></p>
+   				</div>
+   			</div>
+   			<h2>Affichage du programme sur la console</h2>
+				 <p>Une fois l'horloge paramétré on fait le programme en C pour afficher la date et l'heure en continue.Grâce à ce programme on obtient le résultat suivant :<div class="card-image"><img src="../img/Projet4_6.jpg"></div></p>
+				 <div class="social">
+					<div class="social-header">Partager la page</div>
+					<a class="waves-effect waves-light share-email" title="Partager par mail" onclick="mailShare()"></a>
+					<a class="waves-effect waves-light share-facebook" title="Partager sur Facebook" onclick="fbShare()"></a>
+					<a class="waves-effect waves-light share-twitter" title="Partager sur Twitter" onclick="twitShare()"></a>
+					<a class="waves-effect waves-light share-googleplus" title="Partager sur Google+" onclick="gplusShare()"></a>
+				</div>
+  	</div>
+  </div>
+  <footer class="page-footer bg-primary">
+    <div class="container">
+      <div  class="footer-spacer"></div>
+      <div class="row">
+        <div class="col s8 offset-s8">
+          <ul>
+            <li><a class="async grey-text text-lighten-4" href="../legal.html">Mention légales</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../map.html">Plan du Site</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../w3c.html">W3C</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../credits.html">Les créateurs</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        2018-2019 | Lycée Gustave Eiffel Dijon
+        <a class="grey-text text-lighten-4 right">Tous droits réservés.</a>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/social.js"></script>
+	</footer>
+</body>

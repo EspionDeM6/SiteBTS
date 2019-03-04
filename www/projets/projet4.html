@@ -18,7 +18,7 @@
       <li><a class="async active" href="../index.html">Accueil</a></li>
       <li><a class="async active" href="../projets.html">Projets</a></li>
   </ul>
-  </nav>
+</div>
   <div class="main-container-bg">
     <div class="main-container">
     	<h1>Tiny RTC</h1>
@@ -30,39 +30,36 @@
    			</div>
    			<div class="col s6">
    				<div class="card-image">
-   					<img src="../img/Projet4_2.jpg" >
+   					<img src="../img/Projet4_2.jpg" alt="Image RTC">
    				</div>
    			</div>
    		</div>
-
-   		
-   				<h2>Configuration de l'horloge:</h2></br>
-   			
+  			<h2>Configuration de l'horloge:</h2>
    			<div class="row">
    				<div class="col s6">
    					<div class="card-image">
-   						<img src="../img/Projet4_3.jpg">
+   						<img src="../img/Projet4_3.jpg" alt="Projet Rpi">
    					</div>
    				</div>
    				<div class="col s6">
    					<h3>Initialisation raspberry et Tiny RTC</h3>
    					<p>Pour cela il faut une raspberry pour configurer la Tiny RTC avec l'<strong>I2C</strong>.
    					Raspberry configuré avec une image ISO raspbian-wheezy-sha256, mis dans un carte SD dont le stockage est de 16 Go. 
-   					Avant de la configurer il faut brancher la tiny RTC et la raspberry ensemble avec les connecteurs suivant: <strong>SCL, SDA, VCC, GND</strong>.</br></p>
+   					Avant de la configurer il faut brancher la tiny RTC et la raspberry ensemble avec les connecteurs suivant: <strong>SCL, SDA, VCC, GND</strong>.</p>
    				</div>
    			</div>
    			<div class="row">
    				<h3>Mise à l'heure de l'horloge</h3>
    				<div class="col s6">
-   					<p>Pour mettre l'horloge à l'heure on fait un <strong>i2cdetect -y 1</strong> pour avoir l'adresse de la RTC DS1307. Ce qui nous affiche le résultat suivant: <div class="card-image"><img src="../img/Projet4_4.jpg"></div></p>
+   					<p>Pour mettre l'horloge à l'heure on fait un <strong>i2cdetect -y 1</strong> pour avoir l'adresse de la RTC DS1307. Ce qui nous affiche le résultat suivant: <div class="card-image"><img src="../img/Projet4_4.jpg" alt="Image i2cdetect"></div></p>
    				</div>	
    				<div class="col s6">
    					<p>La commande suivante pour mettre la tiny RTC à l'heure « i2cset -y 1,  pour afficher les valeurs que l'on a rentré grace au i2cset on fait "i2cget -y 1 0x68 0x00".
-   					<div class="card-image"><img src="../img/Projet4_5.jpg"></div></p>
+   					<div class="card-image"><img src="../img/Projet4_5.jpg" alt="Image i2cset/get"></div></p>
    				</div>
    			</div>
    			<h2>Affichage du programme sur la console</h2>
-				 <p>Une fois l'horloge paramétré on fait le programme en C pour afficher la date et l'heure en continue.Grâce à ce programme on obtient le résultat suivant :<div class="card-image"><img src="../img/Projet4_6.jpg"></div></p>
+				 <p>Une fois l'horloge paramétré on fait le programme en C pour afficher la date et l'heure en continue.Grâce à ce programme on obtient le résultat suivant :<div class="card-image"><img src="../img/Projet4_6.jpg" alt="Image console"></div></p>
 				 <div class="social">
 					<div class="social-header">Partager la page</div>
 					<a class="waves-effect waves-light share-email" title="Partager par mail" onclick="mailShare()"></a>

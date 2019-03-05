@@ -101,13 +101,7 @@ footer {
   margin: 0 !important;
   align-items: flex-end;
   flex-grow: 1;
-
-}
-
-.footer-spacer {
-	height: 20px;
-	width: 100%;
-	display: block;
+  position: relative;
 }
 
 .social-header {
@@ -164,4 +158,19 @@ header {
 .card-image img{
   width: 400px;
   height: 200px;
+}
+
+.footer-copyright{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+.projet-image img{
+  width: 50%;
+  height: 50%;
+}
+
+.card-title{
+  color: black !important;
 }

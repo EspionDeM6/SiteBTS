@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" href="../css/materialize.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini-Projet</title>
+</head>
+<body>
+  <header class="brown lighten-5">
+    <div class="logo-container bg-primary">
+      <div class="logo"></div>
+    </div>
+  </header>
+  <div class="menu bg-primary">
+  <ul class="large-menu center">
+      <li><a class="async active" href="../index.html">Accueil</a></li>
+      <li><a class="async active" href="../projets.html">Projets</a></li>
+  </ul>
+</div>
+  <div class="main-container-bg">
+    <div class="main-container">
+		<div class="main-container-title">
+			<strong> Relever les valeurs I2C d'un capteur relié à une Raspberry.
+		</div>
+		<div class="main-container-p">
+			Cette page retrace le parcours de notre groupe au cours du mini-projet, qui concerne l'installation d'un capteur <b>RTC DS1307</b> sur une <b>Raspberry</b> ainsi que son fonctionnement.<br><br/> En effet, nous allons parler ici de <b>l'installation</b> de la Raspberry et du capteur, les <b>tests I2C</b> avec SmartTY, puis enfin de la <b>programmation</b> pour pouvoir récupérer les valeurs dans un fichier (.csv) .<p/>
+		</div>
+		<div class="main-container-title">
+			<strong> Installation.
+		</div>
+		<div class="main-container-p">
+			Ressources :<br></br>
+			<div class="res-p">
+				-Image ISO 2018-10-11-raspbian-wheezy<br></br>-Zip Sha256<br></br>-Raspberry et carte SD<br></br>-Win32DiskImager<br></br>-SmartTY<br></br>-CROSS Codeblocks<br></br>-Capteur RTC DS1307<br></br>-Câblages et, si nécessaire, matériel à soudure.
+			</div>
+			<br></br>La première chose à faire a été de graver l'image fournie sur la Raspberry, pour pouvoir ensuite commencer à manipuler. Pour cela, nous avons utilisé <b>Win32DiskImager</b> après avoir branché connecté la Raspberry à la machine Windows:
+				<div class="main-container-p">
+					<img style="width:20%;" src="../img/projet5_2.jpg" alt="img"/>
+					<div class="description">
+						Interface de Win32DiskImager.
+					</div>
+				</div>
+			Une fois le système utilisable, il a fallu vérifier le code <b>SHA256</b> et installer les logiciels nécessaires (<b>Codeblocks</b>, <b>SmartTY</b>).<br></br> Il nous reste à connecter la Raspberry au capteur:
+		</div>
+
+
+		<div class="main-container-p">
+      <div class="row">
+        <div class="col s6">
+          <img style="width:60%;" src="../img/projet5_1.jpg" alt="img"/>
+          <div class="description">
+            Image du capteur branché à la Raspberry.
+          </div> 
+        </div>
+        <div class="col s6">
+          <img style="width:60%;" src="../img/projet5_3.jpg" alt="img"/>
+            <div class="description">
+            Image d'une Raspberry, avec les branchements du capteur.
+          </div>
+		    </div>
+      </div>
+  	 </div>
+     <div class="main-container-title">
+      <strong> Tests I2C.
+    </div>
+    <div class="main-container-p">
+        SmartTY va enfin nous être utile. <b>"i2cdetect"</b>,<b>"i2cset"</b> et <b>"i2cget"</b> ( et parfois <b>"raspi-config"</b> en cas de besoin) on été utiles pour obtenir les valeurs du capteur.<br></br>
+        <img style="width:60%;" src="../img/projet5_4.jpg" alt="img"/>
+        <div class="description">
+            Exemple de i2cdetect, où l'on peut voir apparaître le capteur à l'adresse 0x68.
+        </div>
+    </div>
+    <div class="main-container-title">
+      <strong> Programmation.
+    </div>
+    <div class="main-container-p">
+        Une fois tous les tests i2c effectués, il nous a fallu faire un programme capable de tourner <b>en continu</b>, l'intérêt étant d'actualiser les valeurs récupérées par le capteur à chaque nouvelle boucle du programme( on peut choisir l'intervalle de temps qui sépare une boucle d'une autre).<br></br>De plus, nous devions enregistrer ces valeurs dans un fichier csv (il a donc fallu utiliser les fonctions <b>"fopen"</b>, <b>"fclose"</b> et <b>"fprintf"</b>).
+        <img style="width:60%;" src="../img/projet5_5.jpg" alt="img"/>
+        <div class="description">
+            Portion du programme gérant la partie "fichier csv".
+        </div>
+        <br></br> Nous avons donc désormais un programme capable de lire l'heure en continu, tout en faisant des affichages à des intervalles réguliers dans la console et en enregistrant les valeurs dans un fichier csv à chaque renouvellement.
+    </div>
+
+  </div>
+  <footer class="page-footer bg-primary">
+      <div class="container">
+        <div  class="footer-spacer"></div>
+        <div class="row">
+          <div class="col s8 offset-s8">
+            <ul>
+              <li><a class="async grey-text text-lighten-4" href="../legal.html">Mentions légales</a></li>
+              <li><a class="async grey-text text-lighten-4" href="../map.html">Plan du Site</a></li>
+              <li><a class="async grey-text text-lighten-4" href="../w3c.html">W3C</a></li>
+              <li><a class="async grey-text text-lighten-4" href="../credits.html">Les créateurs</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          2018-2019 | Lycée Gustave Eiffel Dijon
+          <a class="grey-text text-lighten-4 right">Tous droits réservés.</a>
+        </div>
+      </div>
+      <script src="js/social.js"></script>
+    </footer>
+</body>

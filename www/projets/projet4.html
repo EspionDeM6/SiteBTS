@@ -24,58 +24,87 @@
     	<h1>Tiny RTC</h1>
     	<div class="row">
    			<div class="col s6" >
-   				<div class="card-text">
    					<p>Ce module tiny RTC est basé sur l'horloge DS1307 avec comme support le protocole i2c. Il utilise une batterie lithium (CR2032). L'horloge/calendrier donne les informations des secondes, minutes, heures, jour, date, mois, et année. La fin du mois est ajusté automatiquement avec les mois de moins de 31 jours, incluant les années bissextile. L'horloge fonctionne avec le format 24 heures ou le format 12 heures avec les indicateurs AM/PM.</p>
-   				</div>
    			</div>
    			<div class="col s6">
-   				<div class="card-image">
-   					<img src="../img/Projet4_2.jpg" alt="Image RTC">
+   				<div class="projet-image">
+						<img src="../img/projet4_2.jpg" alt="Image RTC">
    				</div>
    			</div>
    		</div>
-  			<h2>Configuration de l'horloge:</h2>
-   			<div class="row">
-   				<div class="col s6">
-   					<div class="card-image">
-   						<img src="../img/Projet4_3.jpg" alt="Projet Rpi">
-   					</div>
-   				</div>
-   				<div class="col s6">
-   					<h3>Initialisation raspberry et Tiny RTC</h3>
-   					<p>Pour cela il faut une raspberry pour configurer la Tiny RTC avec l'<strong>I2C</strong>.
-   					Raspberry configuré avec une image ISO raspbian-wheezy-sha256, mis dans un carte SD dont le stockage est de 16 Go. 
-   					Avant de la configurer il faut brancher la tiny RTC et la raspberry ensemble avec les connecteurs suivant: <strong>SCL, SDA, VCC, GND</strong>.</p>
-   				</div>
-   			</div>
-   			<div class="row">
-   				<h3>Mise à l'heure de l'horloge</h3>
-   				<div class="col s6">
-   					<p>Pour mettre l'horloge à l'heure on fait un <strong>i2cdetect -y 1</strong> pour avoir l'adresse de la RTC DS1307. Ce qui nous affiche le résultat suivant: <div class="card-image"><img src="../img/Projet4_4.jpg" alt="Image i2cdetect"></div></p>
-   				</div>	
-   				<div class="col s6">
-   					<p>La commande suivante pour mettre la tiny RTC à l'heure « i2cset -y 1,  pour afficher les valeurs que l'on a rentré grace au i2cset on fait "i2cget -y 1 0x68 0x00".
-   					<div class="card-image"><img src="../img/Projet4_5.jpg" alt="Image i2cset/get"></div></p>
-   				</div>
-   			</div>
-   			<h2>Affichage du programme sur la console</h2>
-				 <p>Une fois l'horloge paramétré on fait le programme en C pour afficher la date et l'heure en continue.Grâce à ce programme on obtient le résultat suivant :<div class="card-image"><img src="../img/Projet4_6.jpg" alt="Image console"></div></p>
-				 <div class="social">
-					<div class="social-header">Partager la page</div>
-					<a class="waves-effect waves-light share-email" title="Partager par mail" onclick="mailShare()"></a>
-					<a class="waves-effect waves-light share-facebook" title="Partager sur Facebook" onclick="fbShare()"></a>
-					<a class="waves-effect waves-light share-twitter" title="Partager sur Twitter" onclick="twitShare()"></a>
-					<a class="waves-effect waves-light share-googleplus" title="Partager sur Google+" onclick="gplusShare()"></a>
-				</div>
-  	</div>
+   		<h2>Configuration de l'horloge:</h2></br>
+      <div class="row">
+        <div class="col s6">
+          <div class="projet-image">
+            <img src="../img/projet4_3.jpg" alt="Projet Rpi">
+          </div>
+        </div>
+        <div class="col s6">
+          <h3>Initialisation raspberry et Tiny RTC</h3>
+          <p>Pour cela il faut une raspberry pour configurer la Tiny RTC avec l'<strong>I2C</strong>.
+          Raspberry configuré avec une image ISO raspbian-wheezy-sha256, mis dans un carte SD dont le stockage est de 16 Go. 
+          Avant de la configurer il faut brancher la tiny RTC et la raspberry ensemble avec les connecteurs suivant: <strong>SCL, SDA, VCC, GND</strong>.</br></p>
+        </div>
+      </div>
+      <div class="row">
+        <h3>Mise à l'heure de l'horloge</h3>
+        <div class="col s6">
+          <p>Pour mettre l'horloge à l'heure on fait un <strong>i2cdetect -y 1</strong> pour avoir l'adresse de la RTC DS1307. Ce qui nous affiche le résultat suivant: <div class="projet-image"><img src="../img/projet4_4.jpg" alt="Image i2cdetect"></div></p>
+        </div>	
+        <div class="col s6">
+          <p>La commande suivante pour mettre la tiny RTC à l'heure « i2cset -y 1,  pour afficher les valeurs que l'on a rentré grace au i2cset on fait "i2cget -y 1 0x68 0x00".
+          <div class="projet-image"><img src="../img/projet4_5.jpg" alt="Image i2cset/get"></div></p>
+        </div>
+      </div>
+      <h2>Affichage du programme sur la console </h2>
+      <p>Une fois l'horloge paramétré on fait le programme en C pour afficher la date et l'heure en continue.Grâce à ce programme on obtient le résultat suivant :<div class="projet-image"><img src="../img/projet4_6.jpg" alt="Image console"></div></p>
+      <h1>Capteur de température LM19</h1>
+      <p>Le capteur LM19 est un capteur de température à sortie analogique avec un circuit
+      integré CMOS, qui a une portée de -55°C à +130°C. La fourchette d'alimentation
+      est de +2.4V à +5.5V. Le LM19 a une fonction de transfert linéaire. Ce capteur nécessite
+      très peu d'énergie et ne chauffe quasiment pas. Il peut donc facilement être connecté
+      directement à la sortie d'une porte logique.</p>
+      <div class="row">
+        <div class="col s6">
+          <img src="../img/projet4_7.jpg">
+        </div>
+        <div class="col s6">
+          <p>Le capteur de température utilisé est un capteur LM19 branché à une
+          carte PCF8591. La PCF8591 contient 4 ports, un convertisseur analogique/numérique,
+          un capteur de température LM19 et un potentiomètre. On utilise un capteur
+          externe connecté au port 1 de la carte. On utilise celui-ci à la place du
+          capteur déjà sur la carte car il est plus précis.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <p>On peut obtenir la température avec la commande shell "sudo i2cget -y 1 0x48 0x02"
+          ou la ligne de code "i2c_smbus_read_byte_data".On obtient une valeur héxadécimale
+          avec laquelle on peut calculer la température. On utilise la formule "(95 – N0) / 0,5865"
+          N0 étant la valeur que l'on obtient avec les commandes citées plus haut. On peut ensuite
+          afficher la température dans la console, avec un rafraichissement toutes les secondes: </p>
+        </div>
+        <div class="col s6">
+          <img src="../img/projet4_8.png">
+          <img src="../img/projet4_9.png">
+        </div>
+      </div>
+      <h1>Mise en Commun</h1>
+      <p>Une fois que nous avons branché les deux composants sur un même raspberry nous avons assemblé les deux codes sur un seul et même code. Pour cela on a retiré les « fopen », « fclose » et diverses commandes en double et combiné les librairies. Les parties d'initialisation des composants et de récupération des valeurs sont mises à bout et les affichage/enregistrement sont mis dans la même boucle (for de 10 secondes). On a ensuite créé un fichier qui s'appelle i2c.csv pour pouvoir enregistré les données. Grâce au programme nous obtenons ceci dans la console :</p>
+      <img src="../img/projet4_10.png"><br>
+      <p>Et ceci dans le fichier csv :</p>
+      <img src="../img/projet4_11.png">
+      <p>Et du coup on obtient un tableau :</p>
+      <img src="../img/projet4_12.png">
+    </div>
   </div>
-  <footer class="page-footer bg-primary">
+	<footer class="page-footer bg-primary">
     <div class="container">
       <div  class="footer-spacer"></div>
       <div class="row">
         <div class="col s8 offset-s8">
           <ul>
-            <li><a class="async grey-text text-lighten-4" href="../legal.html">Mention légales</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../legal.html">Mentions légales</a></li>
             <li><a class="async grey-text text-lighten-4" href="../map.html">Plan du Site</a></li>
             <li><a class="async grey-text text-lighten-4" href="../w3c.html">W3C</a></li>
             <li><a class="async grey-text text-lighten-4" href="../credits.html">Les créateurs</a></li>

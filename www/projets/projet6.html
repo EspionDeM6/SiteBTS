@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" href="../css/materialize.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini-Projet</title>
+</head>
+<body>
+  <header class="brown lighten-5">
+    <div class="logo-container bg-primary">
+      <div class="logo"></div>
+    </div>
+  </header>
+  <div class="menu bg-primary">
+  <ul class="large-menu center">
+      <li><a class="async active" href="../index.html">Accueil</a></li>
+      <li><a class="async active" href="../projets.html">Projets</a></li>
+  </ul>
+</div>
+  <div class="main-container-bg">
+    <div class="main-container">
+      <h1 style="text-align: center; color: red;"> Le capteur HTU21DF </h1>
+      <div class="row">
+        <div class="col s4"><img src="../img/projet6_1.jpg" height="220" width="320"></div>
+        <div class="col s8">
+          <p style="font-size: 20px;"><br><br>HTU21DF Humidity Sensor est un capteur qui fournit des signaux au format numérique I2C. Ce capteur est un transducteur plug-and-play d'humidité et de température dédié aux applications OEM. La résolution du capteur HTU21D peut être modifiée sur commande (8/12 bits jusqu'à 12/12 bits pour RH/T).</p>
+        </div>
+      </div>
+    <div class="divider"></div>
+    <div class="section">
+      <h5 style="color: red;">Installation</h5>
+    </div>
+    <p style="font-size: 20px;">Nous avons utilisé différentes ressources comme l'image ISO 2018-10-11-raspbian-wheezy, le Zip Sha256, une Raspberry avec une carte SD, du câblages, du matériel à soudure, Win32DiskImager, SmartTY, Cross CodeBlocks et enfin un capteur HTU21DF.</p>
+    <div style="text-align:center">
+      <img src="../img/projet6_2.jpg" height="150" width="200">
+      <p>On branche le capteur sur la Raspberry en reliant les 4 câbles (SCL/SCL ; SDA/SDA ; GND/GND ; VIN/5V)</p>
+      <img src="../img/projet6_3.png" height="150" width="200">
+      <p>Le capteur doit être branché à l'adresse 0x40 quand la commande i2cdetect -y1 est tapé.</p>
+      <div class="divider"></div>
+      <div class="section">
+        <h5 style="color: red;">Résultats</h5>
+      </div>
+      <p style="font-size: 20px;"> Une fois le capteur correctement branché et configuré, nous pouvons commencer à afficher certains résultats.
+        <br> La commande <i>i2cget -y 1 0x40 0xE5 w </i> permet de savoir le taux d'humidité.
+        <br> La commande <i>i2cget -y 1 0x40 0xE3 w</i> permet de savoir la température.
+        <br> Tous les résultats de ces commandes seront donnés sous-forme d'adresse en hexadécimal.
+        <br>
+        <br> Tous ces résultats ont été effectué en salle de cours, j'ai commencé donc par le taux d'humidité. Cela m'a indiqué l'adresse 0x5560 et en la convertissant en décimal cela donne 21856.
+        <br> En utilisant la formule Rh = -6+125x(S Rh/65536) j'ai pu trouvé un taux d'humidité de 35.7%.
+        <br> Quant à la température, l'adresse est 0x65DE soit 25566 en décimal.
+        <br> La formule étant Temp = -46.85+175.72x(S temp/65536), la température de la salle est 21.7°C.
+      </p>
+    </div>
+    </div>
+  </div>
+  <footer class="page-footer bg-primary">
+    <div class="container">
+      <div  class="footer-spacer"></div>
+      <div class="row">
+        <div class="col s8 offset-s8">
+          <ul>
+            <li><a class="async grey-text text-lighten-4" href="../legal.html">Mentions légales</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../map.html">Plan du Site</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../w3c.html">W3C</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../credits.html">Les créateurs</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        2018-2019 | Lycée Gustave Eiffel Dijon
+        <a class="grey-text text-lighten-4 right">Tous droits réservés.</a>
+      </div>
+    </div>
+    <script src="js/social.js"></script>
+	</footer>
+</body>
+</html>

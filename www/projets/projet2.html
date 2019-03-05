@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" href="../css/materialize.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini-Projet</title>
+</head>
+<body>
+  <header class="brown lighten-5">
+    <div class="logo-container bg-primary">
+      <div class="logo"></div>
+    </div>
+  </header>
+  <div class="menu bg-primary">
+  <ul class="large-menu center">
+      <li><a class="async active" href="../index.html">Accueil</a></li>
+      <li><a class="async active" href="../projets.html">Projets</a></li>
+  </ul>
+</div>
+  <div class="main-container-bg">
+    <div class="main-container">
+      <h1 style="text-align: center;"><u> Projet 2: Capteur de température & horloge</u></h1>
+		<ul><u><b>Le matériel:</b></u>
+			<li>-Un raspberry avec alimentation, câble HDMI, ect...</li>
+			<li>-Un capteur de température DS1621</li>
+      <li>-Une horloge DS1307</li>
+			<li>-Câble éthernet</li>
+			<li>-Clavier/Souris</li>
+			<li>-Carte SD</li><br/>			
+		</ul>
+		
+		<img src="../img/projet2_1.jpg">
+    <img src="../img/projet2_2.png">
+		
+		<ul><u><b>Logiciel à utiliser:</b></u>
+			<li>-SmarTTY</li><br/>
+		</ul>
+
+    <img src="../img/projet2_3.jpg">
+
+		<ul><u><b>Fonction du logiciel:</b></u>
+			<li>-C'est un logiciel qui permet de contrôler le raspberry depuis Windows 10 à l'aide d'une console de commande.<br/>
+    </ul>
+
+    <ul><b><u>Définition du Bus I2C:</b></u>
+    <p>I2C (signifie : Inter-Integrated Circuit, en anglais) est un bus informatique qui a émergé de la « guerre des standards » lancée par les acteurs du monde électronique. Conçu par Philips pour les applications de domotique et d’électronique domestique, il permet de relier facilement un microprocesseur et différents circuits, notamment ceux d’un téléviseur moderne : récepteur de la télécommande, réglages des amplificateurs basses fréquences, tuner, horloge, gestion de la prise péritel,...<br/>
+
+    Il existe d’innombrables périphériques exploitant ce bus, il est même implémentable par logiciel dans n’importe quel microcontrôleur. Le poids de l’industrie de l’électronique grand public a permis des prix très bas grâce à ces nombreux composants.<br/>
+
+    Ce bus porte parfois le nom de TWI (Two Wire Interface) ou TWSI (Two Wire Serial Interface) chez certains constructeurs.<br/></p>
+    
+    <ul><b><u>Commande à utiliser:</b></u>
+      <li>gcc -Wall [nom du projet]</li>
+      <li>
+      <li>
+      <li>i2cset -y 1 0x48 0xEE (demande au capteur de détecter la température)</li>
+      <li>i2cget -y 1 0x48 0xAA (demande au capteur de donner la température)</li>
+	  <li>i2cset -y 1 0x68 0x00 0x(secondes)(paramètre les secondes de l'horloge)
+	  <li>i2cset -y 1 0x68 0x01 0x(minutes)(paramètre des minutes de l'horloge)
+	  <li>i2cset -y 1 0x68 0x02 0x(heures)(paramètre les heures de l'horloge)
+	  <li>C'est le même principe pour la date (0x03=jour de la semaine / 0x04=numéro du jour / 0x05=le mois)
+      <li>./a.out (permet d'ouvrir le fichier .csv)</li>
+    </ul><br/>
+
+    <ul><b><u>Objectif du projet</b></u>
+      <p>Le but du projet est de connaître la température et l'heure à l'aide d'un raspberry, 
+      d'un capteur de température DS1621 et d'une horloge DS1307 pour, ensuite, avoir les résultats 
+      dans un fichier .csv.<br/>
+    </p></ul>
+    
+    <ul><b><u>Résultat du projet température et horloge</b></u></ul>
+  	
+		<img src="../img/projet2_4.png">
+		<img src="../img/projet2_5.png">
+		<img src="../img/projet2_6.png">
+    </div>
+  </div>
+  <footer class="page-footer bg-primary">
+    <div class="container">
+      <div  class="footer-spacer"></div>
+      <div class="row">
+        <div class="col s8 offset-s8">
+          <ul>
+            <li><a class="async grey-text text-lighten-4" href="../legal.html">Mentions légales</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../map.html">Plan du Site</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../w3c.html">W3C</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../credits.html">Les créateurs</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        2018-2019 | Lycée Gustave Eiffel Dijon
+        <a class="grey-text text-lighten-4 right">Tous droits réservés.</a>
+      </div>
+    </div>
+    <script src="js/social.js"></script>
+  </footer>
+</body>

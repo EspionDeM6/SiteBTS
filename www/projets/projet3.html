@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" href="../css/materialize.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini-Projet</title>
+</head>
+<body>
+  <header class="brown lighten-5">
+    <div class="logo-container bg-primary">
+      <div class="logo"></div>
+    </div>
+  </header>
+  <div class="menu bg-primary">
+  <ul class="large-menu center">
+      <li><a class="async active" href="../index.html">Accueil</a></li>
+      <li><a class="async active" href="../projets.html">Projets</a></li>
+  </ul>
+</div>
+  <div class="main-container-bg">
+    <div class="main-container">
+        
+    <ul>
+      <li>
+        <h5>Lire les données du capteur depuis i2c-tools</h5><br>
+
+        <p style="text-align:justify;">
+        <b>- Se connecter en ssh au raspberry pi</b><br>
+
+        Après avoir effectuer l’installation de l’OS, il sera nécessaire dans la suite du projet de se connecter à distance au raspberry pi. Un serveur ssh est installé par défaut sur Raspbian (l’OS). Une fois l’ip connue, je me connecte grâce au logiciel TinyTTY. Les manipulations suivantes seront faites à travers ce client ssh.<br>
+
+        <b>- Activer les outils i2c:</b><br>
+
+        Depuis la ligne de commande, taper la commande sudo raspi-config
+        Sélectionner Interfacing Options, puis i2c, et activer.<br>
+         
+
+        <b>- Connecter le capteur au Raspberry Pi:</b><br>
+        <img src="../img/projet3_1.jpg" alt="Bus i2c"><br>
+        </p>
+        <p style="text-align:justify;">
+          <b>- Se connecter en ssh au raspberry pi</b><br>
+          L’utilitaire i2cdetect permet de parcourir le bus i2c pour détecter les esclaves reliés à ce bus.<br>
+          <img src="../img/projet3_2.jpg" alt="i2cdetect"><br>
+          On remarque que sur le bus i2c-1 il y a deux esclaves i2c :</p>
+          <ul style="text-align:justify;">
+            <li>0x68 qui est l’horloge RTC DS1307 de Steven.</li>
+            <li>0x77 qui est mon capteur, le BME280.</li>
+          </ul><br>
+          <p style="text-align:justify;">
+          Le résultat est donc concluant.<br><br>
+
+          - Utilitaire d’interrogation du bus i2c.<br>
+          - Utilitaire d’interrogation du bus i2c.<br><br>
+
+          Pour interroger le bus i2c, nous disposons de deux utilitaires : <i>i2cget</i> et <i>i2cset</i>.<br>
+
+          Ces utilitaires nous demandent de spécifier dans l’ordre :<br>
+          <ul>
+          <li><p style="text-align:justify;">Le numéro du bus i2c</p></li>
+          <li><p style="text-align:justify;">L’adresse de l’esclave</p></li>
+          <li><p style="text-align:justify;">La ou les registre à lire/écrire.</p></li>
+          </ul>
+          <p style="text-align:justify;">
+          D’après la documentation de mon capteur, les registres à lire vont de :<br>
+
+          <ul>
+          <li><p style="text-align:justify;">0xF7 à 0xF9 pour la pression,</p></li>
+          <li><p style="text-align:justify;">0xFA à 0xFB pour la température,</p></li>
+          <li><p style="text-align:justify;">0xFC à 0xFE pour l’humidité.</p></li>
+          </ul>
+          </p>
+          <p style="text-align:justify;">
+          Étant donné que les valeurs à lire sont sur plusieurs registres, j’ai chercher un moyen de lire plusieurs registres à la suite en une seule fois, j’ai trouvé l’utilitaire i2cdump, qui fonctionne un peu comme i2cget, il prends en paramètre une plage de registre.
+          <br>
+          <img src="../img/projet3_3.jpg" alt="i2cdump"></p><br><br>
+          </li>
+
+          <li>
+            <h5>Lire les données du capteur depuis i2c-tools</h5><br>
+            <p style="text-align:justify;">
+            <b>- Connecter le capteur au Raspberry Pi:</b><br>
+            La méthode <strike>que j’ai suivie</strike> qu’il fallait suivre est celle de la compilation croisée. Le principe est de compiler le programme sous Windows en utilisant un compilateur ARM, ARM étant l’architecture processeur du raspberry pi. Le programme pourra ensuite être transféré et exécuté sur le raspberry pi.<br>
+
+            J’ai trouvé cette méthode un peu contraignante et puisque je ne suis jamais exactement les consignes :), j’ai un peu contourner la méthode décrite ci-dessus.<br>
+
+            J’ai choisi de compiler directement sur le raspberry pi, en utilisant gcc, le programme étant écrit sous Windows à l’aide d’un simple éditeur de texte, ici <i>Atom</i>.<br>
+
+
+
+            Le programme C fonctionne grâce à un driver : i2c-dev.h,  
+            il est donc nécessaire de l’inclure à notre programme sous la forme d’un header au début du programme C.<br>
+
+            Nous allons reprendre l’exemple de la température :<br><br>
+            <img src="../img/projet3_4.jpg" alt="registres"><br>
+            Comme vu ci-dessus, les registre à lire sont bien 0xFA à 0xFB.
+
+            </p>
+
+          </li>
+    </ul>
+
+        <div class="social">
+            <div class="social-header">Partager la page</div>
+            <a class="waves-effect waves-light share-email" title="Partager par mail" onclick="mailShare()"></a>
+            <a class="waves-effect waves-light share-facebook" title="Partager sur Facebook" onclick="fbShare()"></a>
+            <a class="waves-effect waves-light share-twitter" title="Partager sur Twitter" onclick="twitShare()"></a>
+            <a class="waves-effect waves-light share-googleplus" title="Partager sur Google+" onclick="gplusShare()"></a>
+          </div>
+    </div>
+  </div>
+  <footer class="page-footer bg-primary">
+    <div class="container">
+      <div  class="footer-spacer"></div>
+      <div class="row">
+        <div class="col s8 offset-s8">
+          <ul>
+            <li><a class="async grey-text text-lighten-4" href="../legal.html">Mentions légales</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../map.html">Plan du Site</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../w3c.html">W3C</a></li>
+            <li><a class="async grey-text text-lighten-4" href="../credits.html">Les créateurs</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        2018-2019 | Lycée Gustave Eiffel Dijon
+        <a class="grey-text text-lighten-4 right">Tous droits réservés.</a>
+      </div>
+    </div>
+    <script src="js/social.js"></script>
+  </footer>
+</body>
